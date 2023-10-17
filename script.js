@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     botaoSortear.addEventListener('click', realizarSorteio);
 
 function realizarSorteio() {
-    let lista = ['banana', 'cafe', 'chocolate','laranja','carne','ovo','pirulito','porco','cachorro','gato',
+    let lista = ['banana', 'cafe', 'chocolate','laranja','ovo','pirulito','cachorro','gato',
     'leao','vaca','macaco','cavalo','passaro','girafa','peixe'];
     let indiceAleatorio = Math.floor(Math.random() * lista.length);
     let palavraSorteada = lista[indiceAleatorio];
@@ -21,9 +21,11 @@ function realizarSorteio() {
 
 function fragmentarPalavra(palavraSorteada){
     var palavraFinal = "";
+    let listaCaractere = [];
     for (var i = 0; i < palavraSorteada.length; i++) {
         var caractere = palavraSorteada[i];
         if(i%2 == 0 && i!= 0){
+            listaCaractere.push(caractere);
             caractere = "_";
         }
         
@@ -31,7 +33,16 @@ function fragmentarPalavra(palavraSorteada){
     }
 
     inputPalavra.value = palavraFinal;
-    
 }
+
+function randomizaLetras(){
+    let indiceAleatorio = Math.floor(Math.random() * listaCaractere.length);
+    let letra = listaCaractere[indiceAleatorio];
+    let indiceAleatorio2 = Math.floor(Math.random() * 8);
+    
+
+}
+
+
 
 });

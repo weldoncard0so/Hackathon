@@ -8,7 +8,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     height: 100%;
-    background-image: url('imgs/utils/fundo.jpg');
+    background-image: url('imgs/utils/fundo.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

@@ -46,3 +46,57 @@ html, body {
     position: relative;
     display: inline-block;
 }
+
+#star{
+    border: 1px solid red;
+    width: 50%;
+    height: 15%;
+    margin-left: 25%;
+}
+
+#points{
+    border: 1px solid red;
+    width: 50%;
+    height: 5%;
+    margin-left: 25%;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.lifes{
+    border: 1px solid red;
+    width: 50%;
+    height: 10%;
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+#tip{
+    border: 1px solid red;
+    width: 50%;
+    height: 15%;
+    margin-left: 25%;
+}
+
+#tips{
+    border: 1px solid red;
+    width: 50%;
+    height: 5%;
+    margin-left: 25%;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+#btnTips{
+    margin-left: 40%;
+    width: 20%;
+    height: 20%;
+    border: 1px solid red;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+}

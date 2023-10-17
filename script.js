@@ -13,6 +13,9 @@ function realizarSorteio() {
     let img = document.getElementById("imagem");
     inputPalavra.value = palavraSorteada;
     img.setAttribute("src", "imgs/"+palavraSorteada+".png");
+    img.onerror = function() {
+        img.setAttribute("src", "imgs/"+palavraSorteada+".jpg");
+    };
     fragmentarPalavra(palavraSorteada);
 }
 

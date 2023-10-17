@@ -26,3 +26,23 @@ html, body {
     flex: 1;
     border: 1px solid red;
 }
+
+.image{
+    width: 50%;
+    height: 90%;
+    border: 1px solid red;
+    margin-top: 2%;
+    margin-left: 25%;
+}
+
+#text {
+    margin-left: 25%;
+    width: 50%;
+    margin-top: 5%;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}

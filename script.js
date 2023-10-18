@@ -42,23 +42,20 @@ function randomizaLetras(listaCaractere) {
     letra = letra.toUpperCase();
     letraSorteada.textContent = letra;
 
-    // Remove a letra sorteada da lista para evitar repetições
     lista.splice(lista.indexOf(letra), 1);
 
     for (var i = 0; i <= 5; i++) {
         letraSorteada2 = document.getElementById(i.toString());
         if (i != indiceAleatorio2) {
-            // Garante que não haverá letras repetidas
             let indiceAleatorio3 = Math.floor(Math.random() * lista.length);
             letraSorteada2.textContent = lista[indiceAleatorio3];
-            // Remove a letra usada da lista
             lista.splice(indiceAleatorio3, 1);
         }
     }
 }
 
 function escutaBotoes() {
-    for (var i = 0; i <= 5; i++) {  // Alterei para 5 pois agora são 6 opções
+    for (var i = 0; i <= 5; i++) { 
         let opcao = document.getElementById(i);
         opcao.addEventListener("click", function () {
             if (opcao.textContent == letraSorteada.textContent) {
@@ -72,7 +69,7 @@ function escutaBotoes() {
 
 function bloquearLetraEscolhida(letraEscolhidaElement) {
     letraEscolhidaElement.style.backgroundColor = "#ccc";
-    letraEscolhidaElement.removeEventListener("click", null); // Remove o evento de clique
+    letraEscolhidaElement.removeEventListener("click", null);
 }
 
 function mostrarAlerta(mensagem) {
@@ -97,7 +94,7 @@ function mostrarAlerta(mensagem) {
 function resetarLetrasBloqueadas() {
     let letras = document.querySelectorAll('.opcoes');
     letras.forEach(letra => {
-        letra.style.backgroundColor = ""; // Remove o estilo de fundo
+        letra.style.backgroundColor = "";
         letra.addEventListener("click", function () {
             if (letra.textContent == letraSorteada.textContent) {
                 mostrarAlerta("Acertou!");

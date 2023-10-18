@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 <body>
     <div class="container">
         <div class="column left-column">
-                <img src="./imgs/utils/lampada.png" id="tip">
+            <img src="./imgs/utils/lampada.png" id="tip">
             <div id="tips">10</div>
+        </div>
+        
+        <div class="alerta" id="alerta">
+            <div class="alerta-conteudo">
+                <span class="fechar">&times;</span>
+                <p id="alerta-mensagem"></p>
+            </div>
+        </div>
 
-        <div class="opcoes-div">
-            <button class="opcoes" id="0"></button>
-            <button class="opcoes" id="1"></button>
-            <button class="opcoes" id="2"></button>
-        </div>
-        <div class="opcoes-div">    
-            <button class="opcoes" id="3"></button>
-            <button class="opcoes" id="4"></button>
-            <button class="opcoes" id="5"></button>
-        </div>
-        <div class="opcoes-div">
-            <button class="opcoes" id="6"></button>
-            <button class="opcoes" id="7"></button>
-            <button class="opcoes" id="8"></button>
-        </div>
-        </div>
+        <div id="background-desfocado"></div> 
+
         <div class="column center-column">
             <div class="subdiv">
                 <img src="./imgs/chocolate.png" id="imagem"/>
@@ -32,13 +28,22 @@
             <div class="subdiv">
                 <form>
                     <input type="text" name="text" id="inputPalavra"/>
-                    <button id="btnTips">Enviar</button>
                 </form>
+            </div>
+            <div class="opcoes-div">
+                <button class="opcoes" id="0"></button>
+                <button class="opcoes" id="1"></button>
+                <button class="opcoes" id="2"></button>
+            </div>
+            <div class="opcoes-div">    
+                <button class="opcoes" id="3"></button>
+                <button class="opcoes" id="4"></button>
+                <button class="opcoes" id="5"></button>
             </div>
         </div>
         <div class="column right-column">
             <div id="star">
-            <img src="imgs/utils/estrela.png"/>
+                <img src="imgs/utils/estrela.png"/>
             </div>
             <div id="points">1</div>
             <img src="./imgs/utils/coracao-8bit-vida.png" class="lifes"/>

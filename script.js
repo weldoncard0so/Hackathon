@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Defina uma variável global para armazenar a pontuação
+    let vidas = 3;
     let pontuacao = 0;
 
     realizarSorteio();
@@ -67,13 +67,44 @@ document.addEventListener('DOMContentLoaded', function () {
             let opcao = document.getElementById(i);
             opcao.addEventListener("click", function () {
                 if (opcao.textContent == letraSorteada.textContent) {
-                    mostrarAlerta("Acertou!");
+                    mostrarAlerta();
                     acumularPontuacao();
+                    if (vidas < 3) {
+                        vidas++;
+                        restaurarCoracao();
+                    }
                 } else {
+                    vidas--;
+                    removerCoracao();
                     bloquearLetraEscolhida(opcao);
+                    if(vidas == 0){
+                        bloquearLetraAleatoria();
+                    }
                 }
             });
         }
+    }
+
+    function bloquearLetraAleatoria() {
+        let letras = document.querySelectorAll('.opcoes');
+        let letrasNaoClicadas = [...letras].filter(letra => letra.style.backgroundColor !== "#ccc" && letra.textContent !== letraSorteada.textContent);
+    
+        if (letrasNaoClicadas.length > 0) {
+            let indiceAleatorio = Math.floor(Math.random() * letrasNaoClicadas.length);
+            let letraBloqueada = letrasNaoClicadas[indiceAleatorio];
+            bloquearLetraEscolhida(letraBloqueada);
+        }
+    }
+    
+
+    function restaurarCoracao() {
+        let coracoes = document.querySelectorAll('.lifes');
+        coracoes[vidas - 1].style.display = 'block';
+    }
+    
+    function removerCoracao() {
+        let coracoes = document.querySelectorAll('.lifes');
+        coracoes[vidas].style.display = 'none';
     }
 
     function bloquearLetraEscolhida(letraEscolhidaElement) {

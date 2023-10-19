@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    let audio = new Audio('./audios/fundo.mp3');
+    audio.volume = 0.2; // Ajuste o volume conforme necessário
+    audio.loop = true; // Para repetir a música
+
+    document.addEventListener('click', function playAudio() {
+        audio.play();
+        document.removeEventListener('click', playAudio); // Remova o ouvinte após o primeiro clique
+    });
+
     let vidas = 3;
     let pontuacao = 0;
 
@@ -77,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     vidas--;
                     removerCoracao();
                     bloquearLetraEscolhida(opcao);
-                    if(vidas == 0){
+                    if(vidas === 0){
                         bloquearLetraAleatoria();
                     }
                 }
@@ -87,11 +97,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function bloquearLetraAleatoria() {
         let letras = document.querySelectorAll('.opcoes');
-        let letrasNaoClicadas = [...letras].filter(letra => letra.style.backgroundColor !== "#ccc" && letra.textContent !== letraSorteada.textContent);
+        let letrasAtivas = [...letras].filter(letra => letra.style.backgroundColor !== "#ccc");
     
-        if (letrasNaoClicadas.length > 0) {
-            let indiceAleatorio = Math.floor(Math.random() * letrasNaoClicadas.length);
-            let letraBloqueada = letrasNaoClicadas[indiceAleatorio];
+        if (letrasAtivas.length > 0) {
+            let indiceAleatorio = Math.floor(Math.random() * letrasAtivas.length);
+            let letraBloqueada = letrasAtivas[indiceAleatorio];
             bloquearLetraEscolhida(letraBloqueada);
         }
     }
@@ -105,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function removerCoracao() {
         let coracoes = document.querySelectorAll('.lifes');
         coracoes[vidas].style.display = 'none';
+        coracao.src = './imgs/utils/coracao-8bit-sem-vida.png';
     }
 
     function bloquearLetraEscolhida(letraEscolhidaElement) {

@@ -36,7 +36,7 @@ html, body {
 #inputPalavra {
     margin-left: 25%;
     width: 50%;
-    height: 120px; /* Ajuste a altura conforme necessário */
+    height: 120px;
     margin-top: 5%;
     font-size: 28px;
     font-family: 'Press Start 2P', cursive;
@@ -121,23 +121,28 @@ html, body {
     background-color: #ffdb4d;
   }
 
-.opcoes-div{
+  .opcoes-div {
     width: 100%;
     height: 15%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin-top: 25px;
 }
 
 .opcoes {
-    width: 10%;
-    height: 30%;
+    width: 14%;
+    height: 50%;
     text-align: center;
-    font-size: 35px;
-    border-radius: 15px;
-    background-color: #ffcc00;
+    font-size: 30px;
+    background: url('./imgs/utils/botao.png') no-repeat center center;
+    background-size: cover;
+    color: black;
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Press Start 2P', cursive;
 }
+
 
 body.desfocado {
     overflow: hidden;
@@ -165,7 +170,7 @@ body.desfocado {
     width: 50%;
     height: 50%;
     left: 50%;
-    top: 30%;
+    top: 27%;
     transform: translate(-50%, -50%);
 }
 
@@ -190,7 +195,28 @@ body.desfocado {
 }
 
 .alerta-mensagem {
-    margin-top: 90px; /* Ajuste este valor conforme necessário */
+    margin-top: 90px;
+}
+
+#alertaPerdeu {
+    display: none;
+    position: fixed;
+    background: url('./imgs/utils/novamente.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    z-index: 1;
+    width: 50%;
+    height: 50%;
+    left: 50%;
+    top: 27%;
+    transform: translate(-50%, -50%);
+}
+
+#imagemPerdeu {
+    width: 200px;
+    height: 200px;
 }
 
 @keyframes pulse {
@@ -207,5 +233,9 @@ body.desfocado {
 
 #star img,
 .lifes {
-    animation: pulse 1s infinite; /* Adicione essa linha para aplicar a animação */
+    animation: pulse 1s infinite;
+}
+
+.pulse {
+    animation: pulse 1s infinite;
 }

@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     let audio = new Audio('./audios/fundo.mp3');
-    audio.volume = 0.2; // Ajuste o volume conforme necessário
-    audio.loop = true; // Para repetir a música
+    audio.volume = 0.5;
+    audio.loop = true;
 
     document.addEventListener('click', function playAudio() {
         audio.play();
-        document.removeEventListener('click', playAudio); // Remova o ouvinte após o primeiro clique
+        document.removeEventListener('click', playAudio);
     });
 
     let vidas = 3;
@@ -16,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
     escutaBotoes();
 
     function realizarSorteio() {
-        let lista = ['banana', 'cafe', 'chocolate','laranja','ovo','pirulito','cachorro','gato',
-        'leao','vaca','macaco','cavalo','passaro','girafa','peixe'];
+        let lista = ['banana', 'cafe', 'chocolate', 'laranja', 'ovo', 'pirulito', 'cachorro', 'gato',
+            'leao', 'vaca', 'macaco', 'cavalo', 'passaro', 'girafa', 'peixe'];
         let indiceAleatorio = Math.floor(Math.random() * lista.length);
         let palavraSorteada = lista[indiceAleatorio];
         let inputPalavra = document.getElementById("inputPalavra");
         let img = document.getElementById("imagem");
         inputPalavra.value = palavraSorteada;
-        img.setAttribute("src", "imgs/"+palavraSorteada+".png");
+        img.setAttribute("src", "imgs/" + palavraSorteada + ".png");
         fragmentarPalavra(palavraSorteada);
     }
 
@@ -66,14 +65,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-    
+
     function acumularPontuacao() {
         pontuacao++;
         document.getElementById("points").textContent = pontuacao;
     }
 
     function escutaBotoes() {
-        for (var i = 0; i <= 5; i++) { 
+        for (var i = 0; i <= 5; i++) {
             let opcao = document.getElementById(i);
             opcao.addEventListener("click", function () {
                 if (opcao.textContent == letraSorteada.textContent) {
@@ -87,35 +86,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     vidas--;
                     removerCoracao();
                     bloquearLetraEscolhida(opcao);
-                    if(vidas === 0){
-                        bloquearLetraAleatoria();
+                    if (vidas === 0) {
+                        resetarJogo();
                     }
+                    ocultarOpcao(opcao);
                 }
             });
         }
     }
 
-    function bloquearLetraAleatoria() {
-        let letras = document.querySelectorAll('.opcoes');
-        let letrasAtivas = [...letras].filter(letra => letra.style.backgroundColor !== "#ccc");
-    
-        if (letrasAtivas.length > 0) {
-            let indiceAleatorio = Math.floor(Math.random() * letrasAtivas.length);
-            let letraBloqueada = letrasAtivas[indiceAleatorio];
-            bloquearLetraEscolhida(letraBloqueada);
-        }
-    }
-    
-
     function restaurarCoracao() {
         let coracoes = document.querySelectorAll('.lifes');
         coracoes[vidas - 1].style.display = 'block';
     }
-    
+
     function removerCoracao() {
         let coracoes = document.querySelectorAll('.lifes');
         coracoes[vidas].style.display = 'none';
-        coracao.src = './imgs/utils/coracao-8bit-sem-vida.png';
     }
 
     function bloquearLetraEscolhida(letraEscolhidaElement) {
@@ -123,35 +110,64 @@ document.addEventListener('DOMContentLoaded', function () {
         letraEscolhidaElement.removeEventListener("click", null);
     }
 
-    function mostrarAlerta(mensagem) {
+    function ocultarOpcao(opcao) {
+        opcao.style.display = 'none';
+    }
+
+    function mostrarAlerta() {
         let alerta = document.getElementById("alerta");
         let backgroundDesfocado = document.getElementById("background-desfocado");
-        let alertaMensagem = document.getElementById("alerta-mensagem");
-
         backgroundDesfocado.classList.add("desfocado");
-
-        alertaMensagem.textContent = mensagem;
+    
+        let palavraAtual = inputPalavra.value;
+        let letraCorreta = letraSorteada.textContent;
+        let palavraNova = "";
+    
+        for (let i = 0; i < palavraAtual.length; i++) {
+            if (palavraAtual[i] === "_") {
+                palavraNova += letraCorreta;
+            } else {
+                palavraNova += palavraAtual[i];
+            }
+        }
+    
+        inputPalavra.value = palavraNova;
+    
+        inputPalavra.classList.add('pulse');
+    
         alerta.style.display = "block";
-
+    
         setTimeout(function () {
             backgroundDesfocado.classList.remove("desfocado");
             alerta.style.display = "none";
+    
+            inputPalavra.classList.remove('pulse');
+    
             resetarLetrasBloqueadas();
             realizarSorteio();
-        }, 3000);
+        }, 5000);
     }
 
-    function resetarLetrasBloqueadas() {
-        let letras = document.querySelectorAll('.opcoes');
-        letras.forEach(letra => {
-            letra.style.backgroundColor = "";
-            letra.addEventListener("click", function () {
-                if (letra.textContent == letraSorteada.textContent) {
-                    mostrarAlerta("Acertou!");
-                } else {
-                    bloquearLetraEscolhida(letra);
-                }
-            });
-        });
+    function resetarJogo() {
+        document.getElementById("alertaPerdeu").style.display = "block";
+    
+        setTimeout(function () {
+            location.reload();
+        }, 4000);
     }
+
+function resetarLetrasBloqueadas() {
+    let letras = document.querySelectorAll('.opcoes');
+    letras.forEach(letra => {
+        letra.style.backgroundColor = "";
+        letra.style.display = 'block';
+        letra.addEventListener("click", function () {
+            if (letra.textContent == letraSorteada.textContent) {
+                mostrarAlerta("Acertou!");
+            } else {
+                bloquearLetraEscolhida(letra);
+            }
+        });
+    });
+}
 });

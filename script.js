@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     audio.volume = 0.5;
     audio.loop = true;
 
+    document.getElementById('botaoVoltar').addEventListener('click', function voltarParaInicio(){
+        window.location.href = "index.html";
+    })
+
     document.addEventListener('click', function playAudio() {
         audio.play();
         document.removeEventListener('click', playAudio);
@@ -10,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let vidas = 3;
     let pontuacao = 0;
-
+    
     realizarSorteio();
     escutaBotoes();
 

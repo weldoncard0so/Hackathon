@@ -12,14 +12,12 @@ function realizarSorteio() {
     let inputPalavra = document.getElementById("inputPalavra");
     let img = document.getElementById("imagem");
 
-    // Utilizando a função para embaralhar letras
     let { palavraSorteadaEmbaracada, inputComLetras } = embaralharLetras(palavraSorteada);
 
-    inputPalavra.value = ""; // Define o valor inicial como vazio
-    inputPalavra.disabled = true; // Desabilita o campo
+    inputPalavra.value = ""; 
+    inputPalavra.disabled = true;
     img.setAttribute("src", "imgs/" + palavraSorteada + ".png");
 
-    // Distribuir letras nos botões aleatoriamente em duas fileiras
     distribuirLetrasNosBotoes(palavraSorteadaEmbaracada);
 }
 
@@ -56,7 +54,7 @@ function distribuirLetrasNosBotoes(palavraSorteadaEmbaracada) {
 
 function adicionarBotoesNaFileira(letras, containerId) {
     let botoesContainer = document.getElementById(containerId);
-    botoesContainer.innerHTML = ""; // Limpa os botões existentes
+    botoesContainer.innerHTML = ""; 
 
     for (let letra of letras) {
         let botao = document.createElement("button");
@@ -64,7 +62,7 @@ function adicionarBotoesNaFileira(letras, containerId) {
         botao.textContent = letra;
         botao.addEventListener("click", function() {
             adicionarLetra(this.textContent);
-            this.style.display = "none"; // Oculta o botão após ser clicado
+            this.style.display = "none";
         });
         botoesContainer.appendChild(botao);
     }
@@ -86,12 +84,11 @@ function apagarUltimaLetra(event) {
     let ultimaLetra = inputPalavra.value.slice(-1);
     inputPalavra.value = inputPalavra.value.slice(0, -1);
 
-    // Reabilitar o botão correspondente
     let botoesContainers = document.querySelectorAll(".opcoes-div");
     for (let container of botoesContainers) {
         for (let botao of container.children) {
             if (botao.textContent === ultimaLetra) {
-                botao.style.display = "inline-block"; // Torna o botão visível novamente
+                botao.style.display = "inline-block";
                 break;
             }
         }

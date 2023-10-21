@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Alfabetizando</title>
+
+</head>
+<body>
+    <div class="container">
+        <div class="column left-column">
+            <button id="botaoVoltar" onclick="voltarParaInicio()">Voltar</button>
+        </div>
+        
+        <div class="alerta" id="alerta">
+            <div class="alerta-conteudo">
+                <span class="fechar"></span>
+                <p id="alerta-mensagem"></p>
+            </div>
+        </div>
+
+        <div class="alerta" id="alertaPerdeu">
+            <div class="alerta-conteudo">
+                <img id="imagemPerdeu" style="display: none;">
+                <span class="fechar"></span>
+                <p id="alerta-mensagem"></p>
+            </div>
+        </div>
+
+        <div id="background-desfocado"></div> 
+
+        <div class="column center-column">
+            <div class="subdiv">
+                <img src="./imgs/chocolate.png" id="imagem"/>
+            </div>
+            <div class="subdiv">
+                <form>
+                    <input type="text" name="text" id="inputPalavra"/>
+                    <button id="apagarLetra" class="apagar" onclick="apagarUltimaLetra(event)">Apagar</button>
+                </form>
+            </div>
+            <div id="botoes-container-1" class="opcoes-div">
+                <!-- Botões da primeira fileira serão adicionados aqui -->
+            </div>
+            <div id="botoes-container-2" class="opcoes-div">
+                <!-- Botões da segunda fileira serão adicionados aqui -->
+            </div>
+            
+        </div>
+        <div class="column right-column">
+            <div id="star">
+                <img src="imgs/utils/estrela.png"/>
+            </div>
+            <div id="points">0</div>
+            <img src="./imgs/utils/coracao-8bit-vida.png" class="lifes"/>
+            <img src="./imgs/utils/coracao-8bit-vida.png" class="lifes"/>
+            <img src="./imgs/utils/coracao-8bit-vida.png" class="lifes"/>
+        </div>
+    </div>
+    <script src="scriptAcerteoNome.js"></script>
+</body>
+</html>

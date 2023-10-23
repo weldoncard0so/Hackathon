@@ -1,12 +1,18 @@
-body {
+html, body {
+  height: 100%;
   margin: 0;
-  font-family: 'Press Start 2P', cursive;
+  padding: 0;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .container {
   display: flex;
   height: 100vh;
   background-image: url(./imgs/utils/fundo.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .center-column {

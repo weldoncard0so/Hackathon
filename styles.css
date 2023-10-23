@@ -3,6 +3,8 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 .container {
@@ -10,9 +12,9 @@ html, body {
     justify-content: space-between;
     height: 100%;
     background-image: url('imgs/utils/fundo.png');
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: cover;
 }
 
 .column {
